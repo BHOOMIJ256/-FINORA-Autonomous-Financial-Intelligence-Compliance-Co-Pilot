@@ -1,0 +1,36 @@
+# Environment
+.env
+*.env
+/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+*.pkl
+*.joblib
+
+# Node
+node_modules/
+.next/
+frontend/build/
+frontend/dist/
+
+# Data
+backend/data/raw/*.pdf
+backend/data/processed/*.json
+*.csv
+
+# Docker
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.DS_Store
