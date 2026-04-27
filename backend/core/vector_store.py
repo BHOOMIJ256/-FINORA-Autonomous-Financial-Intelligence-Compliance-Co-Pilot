@@ -14,7 +14,7 @@ def init_collections():
     if settings.QDRANT_COLLECTION_REGULATORY not in existing:
         client.create_collection(
             collection_name=settings.QDRANT_COLLECTION_REGULATORY,
-            vectors_config=VectorParams(size=1536, distance=Distance.COSINE),
+            vectors_config=VectorParams(size=384, distance=Distance.COSINE),
         )
         print(f"[Qdrant] Created collection: {settings.QDRANT_COLLECTION_REGULATORY}")
     else:

@@ -39,7 +39,7 @@ app.add_middleware(
 
 # ── Routers ───────────────────────────────────────────────
 app.include_router(transactions.router, prefix="/api/transactions", tags=["Transactions"])
-app.include_router(compliance.router,   prefix="/api/compliance",   tags=["Compliance"])
+app.include_router(compliance.router, tags=["Compliance"])
 app.include_router(query.router,        prefix="/api/query",         tags=["Query"])
 app.include_router(audit.router,        prefix="/api/audit",         tags=["Audit"])
 

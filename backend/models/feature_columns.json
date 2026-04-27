@@ -1,0 +1,11 @@
+[
+  "amount_zscore",
+  "amount_x_avg",
+  "log_amount",
+  "is_foreign_country",
+  "is_geo_mismatch",
+  "is_mcc_mismatch",
+  "is_late_night",
+  "channel_risk",
+  "user_risk_tier"
+]

@@ -1,0 +1,135 @@
+[
+  {
+    "sector": "NBFC",
+    "keywords": [
+      "NBFC",
+      "non-banking financial",
+      "shadow banking",
+      "liquidity norms",
+      "NBFC regulation",
+      "non-bank lender",
+      "NBFC-MFI",
+      "systemically important NBFC",
+      "layer structure"
+    ],
+    "related_regulators": [
+      "RBI",
+      "SEBI"
+    ]
+  },
+  {
+    "sector": "Insurance",
+    "keywords": [
+      "insurance",
+      "IRDAI",
+      "insurer",
+      "premium",
+      "life insurance",
+      "general insurance",
+      "health insurance",
+      "reinsurance",
+      "insurance regulation",
+      "surrender value",
+      "policy surrender"
+    ],
+    "related_regulators": [
+      "IRDAI",
+      "SEBI"
+    ]
+  },
+  {
+    "sector": "Retail Fintech",
+    "keywords": [
+      "fintech",
+      "digital payments",
+      "payment aggregator",
+      "UPI",
+      "digital lending",
+      "BNPL",
+      "buy now pay later",
+      "neobank",
+      "digital wallet",
+      "prepaid payment",
+      "payment gateway"
+    ],
+    "related_regulators": [
+      "RBI",
+      "NPCI"
+    ]
+  },
+  {
+    "sector": "Microfinance",
+    "keywords": [
+      "microfinance",
+      "MFI",
+      "NBFC-MFI",
+      "self-help group",
+      "group lending",
+      "microcredit",
+      "priority sector lending",
+      "financial inclusion",
+      "rural credit",
+      "SHG"
+    ],
+    "related_regulators": [
+      "RBI",
+      "NABARD"
+    ]
+  },
+  {
+    "sector": "Housing Finance",
+    "keywords": [
+      "housing finance",
+      "HFC",
+      "home loan",
+      "mortgage",
+      "NHB",
+      "National Housing Bank",
+      "affordable housing",
+      "real estate lending",
+      "loan against property",
+      "LAP"
+    ],
+    "related_regulators": [
+      "NHB",
+      "RBI"
+    ]
+  },
+  {
+    "sector": "Payment Gateway",
+    "keywords": [
+      "payment gateway",
+      "payment aggregator",
+      "PPI",
+      "prepaid",
+      "escrow",
+      "nodal account",
+      "merchant payments",
+      "card network",
+      "transaction switching"
+    ],
+    "related_regulators": [
+      "RBI",
+      "NPCI"
+    ]
+  },
+  {
+    "sector": "Wealth Management",
+    "keywords": [
+      "wealth management",
+      "mutual fund",
+      "portfolio management",
+      "PMS",
+      "AIF",
+      "alternative investment",
+      "SEBI regulations",
+      "investment adviser",
+      "robo advisory",
+      "asset management"
+    ],
+    "related_regulators": [
+      "SEBI",
+      "AMFI"
+    ]
+  }
+]
