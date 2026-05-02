@@ -1,0 +1,14 @@
+{
+  "model_name": "ProsusAI/finbert",
+  "label_map": {
+    "LABEL_0": "positive",
+    "LABEL_1": "negative",
+    "LABEL_2": "neutral",
+    "positive": "positive",
+    "negative": "negative",
+    "neutral": "neutral"
+  },
+  "max_length": 512,
+  "verified": true,
+  "verified_at": "2026-05-02T20:29:56"
+}
