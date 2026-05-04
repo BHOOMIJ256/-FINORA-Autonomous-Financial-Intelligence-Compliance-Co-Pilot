@@ -205,21 +205,9 @@ async def compliance_health():
 
 # ── Background task ───────────────────────────────────────
 
-async def _persist_audit_log(entry: dict):
-    """
-    Persist audit log entry to PostgreSQL.
+from agents.audit_agent import persist_log
+from core.database import AsyncSessionLocal
 
-    Currently logs to console only.
-    When Agent 4 (Audit Trail Agent) is built, replace the logger
-    call with an actual DB insert. The signature will become:
-        async def _persist_audit_log(entry: dict, db: AsyncSession)
-    and the caller will pass the db session explicitly:
-        background_tasks.add_task(_persist_audit_log, audit_entry, db)
-    """
-    logger.debug(
-        f"[AuditLog] id={entry.get('log_id')} | "
-        f"agent={entry.get('agent_name')} | "
-        f"action={entry.get('action_taken')} | "
-        f"confidence={entry.get('confidence_score')} | "
-        f"ts={entry.get('timestamp')}"
-    )
+async def _persist_audit_log(entry: dict):
+    async with AsyncSessionLocal() as db:
+        await persist_log(entry, db)

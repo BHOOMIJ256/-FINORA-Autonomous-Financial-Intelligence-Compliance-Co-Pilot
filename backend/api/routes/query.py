@@ -47,5 +47,9 @@ async def query_health():
     return {"agent": "market_sentiment_agent", "status": "ok"}
 
 
+from agents.audit_agent import persist_log
+from core.database import AsyncSessionLocal
+
 async def _log_audit(entry: dict):
-    logger.debug(f"[AuditLog] {entry['agent_name']} | {entry['action_taken']}")
+    async with AsyncSessionLocal() as db:
+        await persist_log(entry, db)

@@ -214,26 +214,7 @@ async def transaction_agent_health(db: AsyncSession = Depends(get_db)):
 
 # ── Background task ───────────────────────────────────────
 
+from agents.audit_agent import persist_log
+
 async def _persist_audit_log(entry: dict, db: AsyncSession):
-    """Persist audit log to PostgreSQL audit_logs table."""
-    try:
-        await db.execute(
-            text("""
-                INSERT INTO audit_logs (
-                    log_id, agent_name, trigger_type, input_summary,
-                    output_summary, full_reasoning, confidence_score,
-                    action_taken, timestamp, related_entity_id,
-                    related_entity_type, query_text
-                ) VALUES (
-                    :log_id, :agent_name, :trigger_type, :input_summary,
-                    :output_summary, :full_reasoning, :confidence_score,
-                    :action_taken, :timestamp, :related_entity_id,
-                    :related_entity_type, :query_text
-                )
-            """),
-            entry
-        )
-        await db.commit()
-        logger.debug(f"[AuditLog] Persisted: {entry['log_id']}")
-    except Exception as e:
-        logger.error(f"[AuditLog] Persist failed: {e}")
+    await persist_log(entry, db)

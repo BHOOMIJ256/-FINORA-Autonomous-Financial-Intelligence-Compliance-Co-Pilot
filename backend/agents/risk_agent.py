@@ -231,15 +231,44 @@ Respond ONLY with JSON:
         llm      = get_llm()
         response = llm.invoke([SystemMessage(content=SYSTEM_PROMPT),
                                HumanMessage(content=prompt)])
+
+        # Guard against empty response
+        if not response or not response.content or not response.content.strip():
+            raise ValueError("Empty response from Groq")
+
         raw = re.sub(r"^```json\s*", "", response.content.strip())
         raw = re.sub(r"\s*```$", "", raw).strip()
+
+        # Guard against non-JSON response
+        if not raw.startswith("{"):
+            raise ValueError(f"Non-JSON response: {raw[:100]}")
+
         return json.loads(raw)
+
     except Exception as e:
         logger.error(f"[Agent2] LLM error: {e}")
-        return {"explanation": f"ML flagged: {', '.join(anomaly_types)}",
-                "evidence": [f"Risk score: {ml_result['risk_score']}"],
-                "recommended_action": f"Manual review — {ml_result['action']}",
-                "confidence": ml_result["risk_score"]}
+        return {
+            "explanation": (
+                f"Transaction ₹{txn.get('amount'):,.2f} at "
+                f"{txn.get('merchant_name', 'unknown merchant')} "
+                f"flagged for {', '.join(anomaly_types)}. "
+                f"Risk score {ml_result['risk_score']} triggers "
+                f"{ml_result['action']} action per FRAUD-001 policy."
+            ),
+            "evidence": [
+                f"Risk score: {ml_result['risk_score']} "
+                f"(threshold: {ml_result['action']})",
+                f"Amount ratio: {features_raw['amount_ratio']}x "
+                f"user's 90-day average of ₹{features_raw['user_avg']:,.2f}",
+                f"Anomaly signals detected: "
+                f"{', '.join(anomaly_types)}"
+            ],
+            "recommended_action": (
+                f"Manual review required. Compliance team to verify "
+                f"transaction per AML-002 monitoring policy."
+            ),
+            "confidence": ml_result["risk_score"]
+        }
 
 
 def get_policy_refs(action, anomaly_types):

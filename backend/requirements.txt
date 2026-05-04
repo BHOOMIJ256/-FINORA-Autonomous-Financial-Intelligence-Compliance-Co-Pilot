@@ -43,6 +43,7 @@ apscheduler==3.10.4
 loguru==0.7.2
 
 
+
 beautifulsoup4==4.12.3
 sentence-transformers==3.1.1
 
