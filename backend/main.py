@@ -6,7 +6,7 @@ from loguru import logger
 from core.config import settings
 from core.database import init_db
 from core.vector_store import init_collections
-from api.routes import transactions, compliance, query, audit
+from api.routes import transactions, compliance, query, audit, orchestrator
 
 
 @asynccontextmanager
@@ -42,6 +42,8 @@ app.include_router(transactions.router, prefix="/api/transactions", tags=["Trans
 app.include_router(compliance.router, tags=["Compliance"])
 app.include_router(query.router,        prefix="/api/query",         tags=["Query"])
 app.include_router(audit.router,        prefix="/api/audit",         tags=["Audit"])
+app.include_router(orchestrator.router,prefix="/api/orchestrate",tags=["Orchestrator"])
+
 
 
 @app.get("/health")
